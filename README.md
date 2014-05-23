@@ -1,0 +1,33 @@
+File structure:
+
+multibooker/
+	api/
+	client/
+		dev/
+			app/
+				controllers/
+				filters/
+				models/
+				modules/
+				schemes/
+				services/
+				providers/
+				templates/
+				views/
+				app.js
+				index.html
+				login.html
+			i18n/
+			vendor/
+				bower_components/
+		dist/
+			fonts/
+			images/
+			scripts/
+			styles/
+			index.html
+			login.html
+		docs/
+		tests/
+			e2e/
+			specs/
