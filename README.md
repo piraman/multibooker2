@@ -2,32 +2,40 @@ File structure:
 
 multibooker/
 	api/
-	client/
+	app/
 		dev/
-			app/
-				controllers/
-				filters/
-				models/
-				modules/
-				schemes/
-				services/
-				providers/
-				templates/
+			dashboard/
+				i18n/
+					ru.json
+					en.json
+				images/
+				scripts/
+					vendors/
+					controllers/
+					filters/
+					services/
+					directives/
+					app.js
+				styles/
+					vendors/
 				views/
-				app.js
 				index.html
-				login.html
-			i18n/
-			vendor/
-				bower_components/
+			login/
 		dist/
-			fonts/
-			images/
-			scripts/
-			styles/
-			index.html
-			login.html
+			dashboard/
+				fonts/
+				images/
+				scripts/
+				styles/
+				index.html
+			login/
+				fonts/
+				images/
+				scripts/
+				styles/
+				index.html
 		docs/
 		tests/
 			e2e/
 			specs/
+			runner.htnl

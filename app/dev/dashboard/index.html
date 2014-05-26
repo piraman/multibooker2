@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body ng-app="dashboardApp">
+    <section ng-controller="AppController">
+      <header ng-include=" 'views/headbar.html' "></header>
+      <nav ng-include=" 'views/menu.html' "></nav>
+      <div>
+        <header ng-include=" 'views/dock.html' "></header>
+        <section ng-view></section>
+      </div>
+      <aside ng-include=" 'views/chat.html' "></aside>
+      <footer></footer>
+    </section>
+    <script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../../bower_components/angular/angular.min.js"></script>
+    <script src="../../../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/AppController.js"></script>
+    <script src="scripts/controllers/HomeController.js"></script>
+  </body>
+</html>
