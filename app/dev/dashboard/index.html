@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body ng-app="dashboardApp">
-    <section ng-controller="AppController">
-      <header ng-include=" 'views/headbar.html' "></header>
-      <nav ng-include=" 'views/menu.html' "></nav>
-      <div>
-        <header ng-include=" 'views/dock.html' "></header>
-        <section ng-view></section>
-      </div>
-      <aside ng-include=" 'views/chat.html' "></aside>
-      <footer></footer>
-    </section>
-    <script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../../../bower_components/angular/angular.min.js"></script>
-    <script src="../../../bower_components/angular-route/angular-route.min.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/AppController.js"></script>
-    <script src="scripts/controllers/HomeController.js"></script>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/headbar.css">
+    <link rel="stylesheet" type="text/css" href="styles/menu.css">
+    <link rel="stylesheet" type="text/css" href="styles/dock.css">
+    <link rel="stylesheet" type="text/css" href="styles/content.css">
+  </head>
+  <body ng-app="dashboardApp" ng-controller="AppController">
+    <header ng-include=" 'views/headbar.html' " ng-controller="HeadbarController" class="headbar-container"></header>
+    <aside ng-include=" 'views/menu.html' " ng-controller="MenuController" class="menu-container"></aside>
+    <section ng-include=" 'views/dock.html' " ng-controller="DockController" class="dock-container"></section>
+    <section ng-view class="content-container"></section>
+    <script type="text/javascript" src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../../bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/controllers/AppController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/HomeController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/TableController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/MenuController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/HeadbarController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/DockController.js"></script>
   </body>
 </html>
