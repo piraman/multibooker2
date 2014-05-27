@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../../bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/common.css">
     <link rel="stylesheet" type="text/css" href="styles/headbar.css">
@@ -12,10 +15,12 @@
     <header ng-include=" 'views/headbar.html' " ng-controller="HeadbarController" class="headbar-container"></header>
     <aside ng-include=" 'views/menu.html' " ng-controller="MenuController" class="menu-container"></aside>
     <section ng-include=" 'views/dock.html' " ng-controller="DockController" class="dock-container"></section>
-    <section ng-view class="content-container"></section>
+    <section ng-view class="content-container animate-fade-up"></section>
     <script type="text/javascript" src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../../bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="../../../bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="../../../bower_components/angular-animate/angular-animate.min.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
     <script type="text/javascript" src="scripts/controllers/AppController.js"></script>
     <script type="text/javascript" src="scripts/controllers/HomeController.js"></script>

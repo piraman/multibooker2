@@ -4,6 +4,7 @@ angular
 
 .module 'dashboardApp', [
 	'ngRoute'
+	'ngAnimate'
 ]
 
 .config ($routeProvider) ->

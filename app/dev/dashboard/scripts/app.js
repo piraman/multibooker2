@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('dashboardApp', ['ngRoute']).config(function($routeProvider) {
+  angular.module('dashboardApp', ['ngRoute', 'ngAnimate']).config(function($routeProvider) {
     return $routeProvider.when('/', {
       redirectTo: '/home'
     }).when('/home', {
