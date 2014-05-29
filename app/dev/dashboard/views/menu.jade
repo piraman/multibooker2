@@ -1,3 +1,10 @@
-ul
-	li(ng-repeat='item in items')
-		a(href='{{item.route}}') {{item.text}}
+.menu-inner
+	ul.menu
+		li
+			a(href="#/")
+				i.fa.fa-dashboard
+				span dfvdfvdf
+		li(ng-repeat='item in items')
+			a(href='{{item.route}}')
+				i.fa.fa-dashboard
+				span {{item.text}}

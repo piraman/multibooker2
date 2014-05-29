@@ -17,6 +17,10 @@ multibooker/
 					directives/
 					app.js
 				styles/
+					variables.styl
+					mixins.styl
+					core.styl
+					...
 					vendors/
 				views/
 				index.html

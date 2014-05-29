@@ -1,21 +1,22 @@
 .headbar-container {
+  z-index: 10;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
   background-color: #fff;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  height: 50px;
 }
 .headbar-container .logo {
-  display: inline-block;
-  width: 250px;
   background-color: #fff;
-  position: absolute;
+  border-right: 1px solid #e9e9e9;
+  display: inline-block;
   height: 50px;
   line-height: 50px;
+  position: absolute;
   text-align: center;
-  border-right: 1px solid #e9e9e9;
+  width: 250px;
 }
 .headbar-container .bar {
   padding: 0 0 0 250px;
@@ -27,34 +28,25 @@
   line-height: 22px;
   padding: 0;
 }
+.headbar-container .bar .bar-left > li,
+.headbar-container .bar .bar-right > li {
+  float: left;
+}
+.headbar-container .bar .bar-left > li > a,
+.headbar-container .bar .bar-right > li > a,
+.headbar-container .bar .bar-left > li > .btn-group > a,
+.headbar-container .bar .bar-right > li > .btn-group > a {
+  padding: 14px 15px;
+  position: relative;
+  height: 50px;
+}
+.headbar-container .bar .bar-left > li > .toggle-min,
+.headbar-container .bar .bar-right > li > .toggle-min {
+  display: block;
+}
 .headbar-container .bar .bar-left {
   float: left;
 }
 .headbar-container .bar .bar-left > li {
   border-right: 1px solid #e9e9e9;
-  float: left;
-}
-.headbar-container .bar .bar-left > li > a {
-  padding: 14px 15px;
-  position: relative;
-  height: 50px;
-  display: block;
-}
-.headbar-container .bar .bar-left > li > .toggle-min {
-  display: block;
-}
-.headbar-container .bar .bar-left > li > .search-box {
-  width: 300px;
-  padding: 8px 10px;
-}
-.headbar-container .bar .bar-left > li.nav-profile > a {
-  position: relative;
-  display: block;
-  height: 50px;
-}
-.headbar-container .bar .bar-right > li > a {
-  position: relative;
-  display: block;
-  height: 50px;
-  padding: 10px 15px;
 }

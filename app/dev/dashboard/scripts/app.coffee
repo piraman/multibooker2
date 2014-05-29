@@ -13,9 +13,9 @@ angular
 			redirectTo: '/home'
 		.when '/home',
 			templateUrl: '../dashboard/views/home.html'
-			controller: 'HomeController'
+			# controller: 'HomeController'
 		.when '/orders',
 			templateUrl: '../dashboard/views/table.html'
-			controller: 'TableController'
+			# controller: 'TableController'
 		.otherwise
 			redirectTo: '/home'
