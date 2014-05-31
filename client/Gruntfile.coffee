@@ -6,40 +6,40 @@ module.exports = (grunt) ->
 				pretty: yes
 			compile:
 				expand: yes
-				cwd: 'app/'
+				cwd: 'dev/'
 				src: ['**/*.jade']
-				dest: 'app/'
+				dest: 'dev/'
 				ext: '.html'
 		stylus:
 			options:
 				compress: no
 			compile:
 				expand: yes
-				cwd: 'app/'
+				cwd: 'dev/'
 				src: ['**/*.styl']
-				dest: 'app/'
+				dest: 'dev/'
 				ext: '.css'
 		coffee:
 			options:
 				bare: no
 			compile:
 				expand: yes
-				cwd: 'app/'
+				cwd: 'dev/'
 				src: ['**/*.coffee']
-				dest: 'app/'
+				dest: 'dev/'
 				ext: '.js'
 		watch:
 			options:
 				livereload:
 					port: 35730
 			jade:
-				files: ['app/**/*.jade']
+				files: ['dev/**/*.jade']
 				tasks: ['newer:jade']
 			stylus:
-				files: ['app/**/*.styl']
+				files: ['dev/**/*.styl']
 				tasks: ['newer:stylus']
 			coffee:
-				files: ['app/**/*.coffee']
+				files: ['dev/**/*.coffee']
 				tasks: ['newer:coffee']
 
 
