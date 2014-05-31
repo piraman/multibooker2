@@ -1,85 +1,25 @@
-html
+doctype html
+html(ng-app='app')
 
+	head
 
+		title {{title}}
 
+	body
 
+		header(ng-include=' \'app/headbar/headbar.html\' ')
+		aside(ng-include=' \'app/menu/menu.html\' ')
+		header(ng-include=' \'app/dock/dock.html\' ')
+		section(ng-view)
 
+		script(type="text/javascript", src="../../bower_components/jquery/dist/jquery.min.js")
+		script(type="text/javascript", src="../../bower_components/angular/angular.js")
+		script(type="text/javascript", src="../../bower_components/angular-route/angular-route.min.js")
 
+		script(type="text/javascript", src="app/app.js")
 
+		script(type="text/javascript", src="app/headbar/headbar.js")
+		script(type="text/javascript", src="app/menu/menu.js")
+		script(type="text/javascript", src="app/dock/dock.js")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//- doctype html
-//- html(ng-app='dashboardApp')
-
-//- 	head
-
-//- 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
-
-//- 		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic')
-//- 		link(rel='stylesheet', href='../../../bower_components/font-awesome/css/font-awesome.min.css')
-//- 		link(rel='stylesheet', type='text/css', href='../../../bower_components/bootstrap/dist/css/bootstrap.min.css')
-
-//- 		link(rel='stylesheet', type='text/css', href='styles/core.css')
-//- 		link(rel='stylesheet', type='text/css', href='styles/headbar.css')
-//- 		link(rel='stylesheet', type='text/css', href='styles/menu.css')
-//- 		link(rel='stylesheet', type='text/css', href='styles/dock.css')
-//- 		link(rel='stylesheet', type='text/css', href='styles/content.css')
-
-//- 	body(ng-controller='AppController')
-
-//- 		header(ng-include=' \'views/headbar.html\' ', ng-controller='HeadbarController', class='headbar-container')
-//- 		aside(ng-include=' \'views/menu.html\' ', ng-controller='MenuController', class='menu-container')
-//- 		header(ng-include=' \'views/dock.html\' ', ng-controller='DockController', class='dock-container')
-//- 		section(ng-view, class='content-container animate-fade-up')
-
-
-//- 		script(type='text/javascript', src='../../../bower_components/jquery/dist/jquery.min.js')
-//- 		script(type='text/javascript', src='../../../bower_components/bootstrap/dist/js/bootstrap.min.js')
-//- 		script(type='text/javascript', src='../../../bower_components/angular/angular.min.js')
-//- 		script(type='text/javascript', src='../../../bower_components/angular-route/angular-route.min.js')
-//- 		script(type='text/javascript', src='../../../bower_components/angular-animate/angular-animate.min.js')
-
-//- 		script(type='text/javascript', src='scripts/app.js')
-
-//- 		script(type='text/javascript', src='scripts/controllers/AppController.js')
-//- 		script(type='text/javascript', src='scripts/controllers/MenuController.js')
-//- 		script(type='text/javascript', src='scripts/controllers/HeadbarController.js')
-//- 		script(type='text/javascript', src='scripts/controllers/DockController.js')
-
+		script(type="text/javascript", src="app/views/entities/address/address.js")

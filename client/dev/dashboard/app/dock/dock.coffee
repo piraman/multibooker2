@@ -2,4 +2,4 @@
 
 angular
 
-.module 'app.menu', []
+.module 'app.dock', []
