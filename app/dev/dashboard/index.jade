@@ -1,0 +1,93 @@
+doctype html
+
+html(ng-app='dashboardApp', ng-controller='dashboardController')
+
+	head
+
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+
+		link(rel='stylesheet', type='text/css', href='../../../bower_components/font-awesome/css/font-awesome.min.css')
+		link(rel='stylesheet', type='text/css', href='../../../bower_components/bootstrap/dist/css/bootstrap.min.css')
+
+		link(rel='stylesheet', type='text/css', href='styles/core.css')
+		link(rel='stylesheet', type='text/css', href='styles/layout.css')
+
+	body
+
+		header.headbar-container(ng-include=' \'templates/blocks/headbar/headbar.html\' ', ng-controller='HeadbarController')
+		div.menu-dock-content-chat-wrapper
+
+			aside.menu-container(ng-include=' \'templates/blocks/menu/menu.html\' ', ng-controller='MenuController')
+			div.dock-content-wrapper
+
+				header.dock-container(ng-include=' \'templates/blocks/dock/dock.html\' ', ng-controller='DockController')
+				section.content-container(ng-view)
+
+			aside.chat-container(ng-include=' \'templates/blocks/chat/chat.html\' ', ng-controller='ChatController')
+
+		script(type='text/javascript', src='../../../bower_components/angular/angular.js')
+		script(type='text/javascript', src='../../../bower_components/angular-route/angular-route.min.js')
+		script(type='text/javascript', src='../../../bower_components/angular-resource/angular-resource.js')
+
+		script(type='text/javascript', src='scripts/app.js')
+
+		script(type='text/javascript', src='scripts/controllers/controller.js')
+
+		script(type='text/javascript', src='scripts/controllers/blocks/headbar/headbar.js')
+		script(type='text/javascript', src='scripts/controllers/blocks/menu/menu.js')
+		script(type='text/javascript', src='scripts/controllers/blocks/dock/dock.js')
+		script(type='text/javascript', src='scripts/controllers/blocks/chat/chat.js')
+
+		script(type='text/javascript', src='scripts/controllers/entities/addresses/addresses.js')
+		script(type='text/javascript', src='scripts/controllers/entities/addresses/address.js')
+
+		script(type='text/javascript', src='scripts/controllers/entities/orders/orders.js')
+		script(type='text/javascript', src='scripts/controllers/entities/orders/order.js')
+		script(type='text/javascript', src='scripts/controllers/entities/orders/order-detailed.js')
+		script(type='text/javascript', src='scripts/controllers/entities/orders/order-compound.js')
+
+		script(type='text/javascript', src='scripts/controllers/pages/home/home.js')
+
+		script(type='text/javascript', src='scripts/services/resources/addresses/address.js')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//- script(type='text/javascript', src='../../../bower_components/bootstrap/dist/js/bootstrap.min.js')
+		//- script(type='text/javascript', src='../../../bower_components/jquery/dist/jquery.min.js')		
+		//- script(type='text/javascript', src='../../../bower_components/angular-animate/angular-animate.min.js')
+
+		
+
+		//- script(type='text/javascript', src='scripts/controllers/AppController.js')
+		//- script(type='text/javascript', src='scripts/controllers/MenuController.js')
+		//- script(type='text/javascript', src='scripts/controllers/HeadbarController.js')
+		//- script(type='text/javascript', src='scripts/controllers/DockController.js')
+
+		//- link(rel='stylesheet', type='text/css', href='styles/core.css')
+		//- link(rel='stylesheet', type='text/css', href='styles/headbar.css')
+		//- link(rel='stylesheet', type='text/css', href='styles/menu.css')
+		//- link(rel='stylesheet', type='text/css', href='styles/dock.css')
+		//- link(rel='stylesheet', type='text/css', href='styles/content.css')
+
+		//- header(ng-include=' \'templates/headbar.html\' ', ng-controller='HeadbarController', class='headbar-container')
+		//- aside(ng-include=' \'templates/menu.html\' ', ng-controller='MenuController', class='menu-container')
+		//- header(ng-include=' \'templates/dock.html\' ', ng-controller='DockController', class='dock-container')
+		//- section(ng-view, class='content-container animate-fade-up')
