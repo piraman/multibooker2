@@ -10,6 +10,7 @@ module.exports = (grunt) ->
 				src: ['**/*.jade']
 				dest: 'dev/'
 				ext: '.html'
+				extDot: 'last'
 		stylus:
 			options:
 				compress: no
@@ -19,6 +20,7 @@ module.exports = (grunt) ->
 				src: ['**/*.styl']
 				dest: 'dev/'
 				ext: '.css'
+				extDot: 'last'
 		coffee:
 			options:
 				bare: no
@@ -28,6 +30,7 @@ module.exports = (grunt) ->
 				src: ['**/*.coffee']
 				dest: 'dev/'
 				ext: '.js'
+				extDot: 'last'
 		watch:
 			options:
 				livereload:

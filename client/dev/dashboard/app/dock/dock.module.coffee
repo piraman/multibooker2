@@ -1,4 +1,4 @@
-'use sctrict'
+'use sctricts'
 
 angular
 
