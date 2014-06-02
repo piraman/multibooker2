@@ -34,7 +34,7 @@ define ['tableModule'], ->
 			'/orders': 'table_order'
 
 		baseUrl = 'http://192.168.1.101/cgi-bin/b2e'
-		sid = 'RVFctNtHFnASbLodlAgCCWvviSkFPZSffUjDKrnFkiVKMXUoqF'
+		sid = 'eyCFGuiBmotnMtYIDBqbozhMOJpvBjCTmAvFLXmWIjrPjMLMWZ'
 
 		$http
 		.get baseUrl, 

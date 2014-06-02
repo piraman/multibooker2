@@ -1,8 +1,10 @@
 div table {{entity.profile.clientObjectName}}
-table.table.table-striped
+table.table.table-striped.table-bordered
 	thead
 		tr
+			th #
 			th(ng-repeat='columnHeader in entity.profile.name track by $index', ng-show='isVisible($index)') {{columnHeader}}
 	tbody
 		tr(ng-repeat='row in entity.data.data')
+			td {{$index + 1}}
 			td(ng-repeat='cell in row track by $index', ng-show='isVisible($index)') {{cell}}

@@ -1,4 +1,4 @@
-define ['angular'], ->
+define ['angular', 'angularHandsontable'], ->
 
 	'use sctrict'
 
