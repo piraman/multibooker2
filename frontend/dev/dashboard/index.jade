@@ -1,0 +1,14 @@
+doctype html
+html
+
+	head
+		title {{title}}
+
+	body
+		header.headbar-container(ng-include=' \'app/templates/headbar/headbar.template.html\' ')
+		aside.menu-container(ng-include=' \'app/templates/menu/menu.template.html\' ')
+		header.dock-container(ng-include=' \'app/templates/dock/dock.template.html\' ')
+		section.view-container(ng-view)
+
+		script(type='text/javascript', src='../../bower_components/requirejs/require.js', data-main='require.config')
+

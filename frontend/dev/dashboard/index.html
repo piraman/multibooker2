@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <header ng-include=" 'app/templates/headbar/headbar.template.html' " class="headbar-container"></header>
+    <aside ng-include=" 'app/templates/menu/menu.template.html' " class="menu-container"></aside>
+    <header ng-include=" 'app/templates/dock/dock.template.html' " class="dock-container"></header>
+    <section ng-view class="view-container"></section>
+    <script type="text/javascript" src="../../bower_components/requirejs/require.js" data-main="require.config"></script>
+  </body>
+</html>
