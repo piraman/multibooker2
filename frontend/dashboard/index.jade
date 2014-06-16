@@ -1,0 +1,29 @@
+doctype html
+html(ng-app='application', ng-controller='ApplicationController')
+
+	head
+		title {{title}}
+
+	body
+
+		header.headbar-container(ng-include=' \'application/modules/headbar/headbar.template.html\' ')
+		aside.menu-container(ng-include=' \'application/modules/menu/menu.template.html\' ')
+		header.dock-container(ng-include=' \'application/modules/dock/dock.template.html\' ')
+
+		section.view-container(ui-view)
+
+		//- vendor
+		script(type="text/javascript", src="../../bower_components/angular/angular.js")
+		script(type="text/javascript", src="../../bower_components/angular-ui-router/release/angular-ui-router.min.js")
+		script(type="text/javascript", src="../../bower_components/angular-route/angular-route.min.js")
+
+		//- modules
+		script(type="text/javascript", src="application/modules/headbar/headbar.module.js")
+		script(type="text/javascript", src="application/modules/menu/menu.module.js")
+		script(type="text/javascript", src="application/modules/dock/dock.module.js")
+		script(type="text/javascript", src="application/modules/order/order.module.js")
+		script(type="text/javascript", src="application/application.module.js")
+
+
+
+

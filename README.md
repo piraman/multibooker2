@@ -2,6 +2,31 @@ File structure:
 
 <pre>
 	multibooker/
+		frontend/
+			dashboard/
+				application/
+					modules/
+						headbar/
+							headbar.module.coffee
+							headbar.template.jade
+							headbar.styl
+							headbar.spec.coffee
+						menu/
+						dock/
+						table/
+						form/
+						map/
+					services/
+						resources/
+							entity/
+					application.module.coffee
+				assets/
+					fonts/
+					images/
+				index.jade
+			signin/
+		backend/
+<!-- 	multibooker/
 		client/
 			dev/
 				dashboard/
@@ -44,7 +69,7 @@ File structure:
 					static/
 						fonts/
 						images/
-					index.html
+					index.html -->
 </pre>
 
 Plan:
