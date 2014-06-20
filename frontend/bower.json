@@ -1,0 +1,31 @@
+{
+  "name": "multibooker-client",
+  "version": "0.0.0",
+  "homepage": "https://github.com/piraman/multibooker",
+  "authors": [
+    "piraman <piramanx@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-resource": "~1.2.16",
+    "angular-route": "~1.2.16",
+    "requirejs": "~2.1.13",
+    "restangular": "~1.4.0"
+  }
+}

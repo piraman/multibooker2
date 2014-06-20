@@ -1,9 +1,7 @@
-client/node_modules
-client/bower_components
-client/dev/**/*.js
-client/dev/**/*.html
-client/dev/**/*.css
-client/*.js
+frontend/node_modules
+frontend/bower_components
+backend/node_modules
+backend/bower_components
 
 
 

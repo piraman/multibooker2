@@ -1,0 +1,13 @@
+div collection
+div {{addresses[0]}}
+table
+	thead
+		tr
+			th(ng-repeat='header in addresses[0].data_columns') {{header}}
+	tbody
+		tr(ng-repeat='row in addresses[0].data')
+			td(ng-repeat='cell in row') {{cell}}
+			td
+				button(ng-click='delete($index)') Delete
+			td
+				button(ng-click='edit($index)') Edit

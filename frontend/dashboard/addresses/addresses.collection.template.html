@@ -1,0 +1,21 @@
+
+<div>collection</div>
+<div>{{addresses[0]}}</div>
+<table>
+  <thead>
+    <tr>
+      <th ng-repeat="header in addresses[0].data_columns">{{header}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in addresses[0].data">
+      <td ng-repeat="cell in row">{{cell}}</td>
+      <td>
+        <button ng-click="delete($index)">Delete</button>
+      </td>
+      <td>
+        <button ng-click="edit($index)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

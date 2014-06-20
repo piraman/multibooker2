@@ -34,7 +34,7 @@ module.exports = (grunt) ->
 		watch:
 			options:
 				livereload:
-					port: 9003
+					port: 9002
 			jade:
 				files: ['./**/*.jade', '!bower_components/**', '!node_modules/**']
 				tasks: ['newer:jade']
