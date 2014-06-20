@@ -5,7 +5,7 @@
       return $scope.items = [
         {
           route: '#/addresses',
-          text: 'Addresses'
+          text: 'Addressess'
         }, {
           route: '#/addresses/201',
           text: 'Address 201'
