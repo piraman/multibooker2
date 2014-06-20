@@ -12,7 +12,6 @@
       };
     })());
     app.config(function($routeProvider, $httpProvider, ROUTES) {
-      console.log($httpProvider);
       $httpProvider.defaults.headers.common['X-Sid'] = 'bwPxKUPqWMoCTWQoolBnXdSkYnxudrYuQyTUQcKIBEMSjxBsHN';
       return $routeProvider.when(ROUTES.ADDRESSES, {
         templateUrl: './addresses/addresses.collection.template.html',

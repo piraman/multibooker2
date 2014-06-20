@@ -5,45 +5,41 @@
       var baseUrl;
       baseUrl = API + '/addresses';
       return {
-        readCollection: function() {
-          var res;
-          res = $http.get(baseUrl).success(function(data, status, headers, config) {
-            return data;
+        readCollection: function(cb) {
+          return $http.get(baseUrl).success(function(data, status, headers, config) {
+            return cb(data, status, headers, config);
           }).error(function(data, status, headers, config) {
-            return data;
+            return cb(data, status, headers, config);
           });
-          return res;
         },
-        create: function(data) {
+        create: function(data, cb) {
           return $http.post(baseUrl, data).success(function(data, status, headers, config) {
-            return data;
+            return cb(data, status, headers, config);
           }).error(function(data, status, headers, config) {
-            return data;
+            return cb(data, status, headers, config);
           });
         },
-        read: function(addressid) {
+        read: function(addressid, cb) {
           return $http.get(baseUrl + '/' + addressid).success(function(data, status, headers, config) {
-            return data;
+            return cb(data, status, headers, config);
           }).error(function(data, status, headers, config) {
-            return data;
+            return cb(data, status, headers, config);
           });
         },
-        update: function(addressid, data) {
-          return $http.put(baseUrl + '/' + addressid, {
-            data: data
-          }).success(function(data, status, headers, config) {
-            return data;
+        update: function(addressid, data, cb) {
+          return $http.put(baseUrl + '/' + addressid, data).success(function(data, status, headers, config) {
+            return cb(data, status, headers, config);
           }).error(function(data, status, headers, config) {
-            return data;
+            return cb(data, status, headers, config);
           });
         },
-        'delete': function(addressid, data) {
+        'delete': function(addressid, data, cb) {
           return $http["delete"](baseUrl + '/' + addressid, {
             data: data
           }).success(function(data, status, headers, config) {
-            return data;
+            return cb(data, status, headers, config);
           }).error(function(data, status, headers, config) {
-            return data;
+            return cb(data, status, headers, config);
           });
         }
       };

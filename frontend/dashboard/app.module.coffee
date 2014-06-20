@@ -7,7 +7,6 @@ define ['angular', './addresses/addresses.index', './menu/menu.index'], (ng) ->
 		ADDRESS: '/addresses/:addressid'
 		ADDRESS_CREATE: '/addresses/create'
 	app.config ($routeProvider, $httpProvider, ROUTES) ->
-		console.log $httpProvider
 		$httpProvider.defaults.headers.common['X-Sid'] = 'bwPxKUPqWMoCTWQoolBnXdSkYnxudrYuQyTUQcKIBEMSjxBsHN'
 		$routeProvider
 		.when ROUTES.ADDRESSES,

@@ -32,7 +32,7 @@ app.use (req, res, next) ->
 
 app.all '*', (req, res, next) ->
 	res.header 'access-control-allow-origin', req.headers.origin
-	res.header 'access-control-allow-methods', 'get, post, put, patch, delete, options'
+	res.header 'access-control-allow-methods', 'get, post, PUT, patch, delete, options'
 	res.header 'access-control-allow-credentials', false
 	res.header 'access-control-allow-headers', 'X-Requested-With, x-http-method-override, content-type, accept, x-sid'
 	do next
@@ -69,6 +69,17 @@ app.route '/addresses/:addressid'
 		path: '/cgi-bin/b2e?request=<query><command>get</command><object>hall_addresses</object><where>ADDR_ID=' + req.params.addressid + '</where><sid>' + sid + '</sid></query>'
 		method: 'GET'
 	mbreq = http.get options, (mbres) ->
+		mbres.setEncoding 'utf8'
+		mbres.on 'data', (chunk) ->
+			res.send JSON.parse(chunk).results[0]
+	do mbreq.end
+.put (req, res) ->
+	options =
+		host: '192.168.1.101'
+		path: '/cgi-bin/b2e?request=<query><command>modify</command><object>hall_addresses</object><addr_id>' + req.params.addressid + '</addr_id><addr>' + req.body.addr + '</addr><objversion>' + req.body.objversion + '</objversion><sid>' + sid + '</sid></query>'
+		method: 'GET'
+	mbreq = http.get options, (mbres) ->
+		console.log mbres.headers
 		mbres.setEncoding 'utf8'
 		mbres.on 'data', (chunk) ->
 			res.send JSON.parse(chunk).results[0]

@@ -1,13 +1,15 @@
 define ['./addresses.module'], (addresses) ->
 	'use strict'
-	addresses.controller 'addresses.element.controller', ($scope, $routeParams,  Address) ->
-		Address.get()
-		# AddressesService.read addressid: $routeParams.addressid, (res) ->
-		# 	$scope.addressid = res.data[0][res.data_columns.indexOf 'ADDR_ID']
-		# 	$scope.text = res.data[0][res.data_columns.indexOf 'ADDR']
-		# $scope.save = ->
-		# 	# console.log address
-		# 	AddressesService.update $scope.text, (res) ->
-		# 		console.log res
+	addresses.controller 'addresses.element.controller', ($scope, $routeParams, Addresses) ->
+		Addresses.read $routeParams.addressid, (data, status, headers, config) ->
+			address =
+				data: {}
+			for column, i in data.data_columns
+				column = do column.toLowerCase
+				address.data[column] = data.data[0][i]
+			$scope.address = address
+			$scope.save = ->
+				Addresses.update $routeParams.addressid, address.data, (data, status, headers, config) ->
+					console.log arguments
 
 

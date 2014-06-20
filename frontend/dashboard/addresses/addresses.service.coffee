@@ -2,37 +2,36 @@ define ['./addresses.module'], (addresses) ->
 	'use strict'
 	addresses.factory 'Addresses', ($http, API) ->
 		baseUrl = API + '/addresses'
-		readCollection: ->
-			res = $http.get baseUrl
+		readCollection: (cb) ->
+			$http.get baseUrl
 			.success (data, status, headers, config) ->
-				data
+				cb data, status, headers, config
 			.error (data, status, headers, config) -> 
-				data
-			res
-		create: (data) ->
+				cb data, status, headers, config
+		create: (data, cb) ->
 			$http.post baseUrl, data
 			.success (data, status, headers, config) ->
-				data
+				cb data, status, headers, config
 			.error (data, status, headers, config) ->
-				data
-		read: (addressid) ->
+				cb data, status, headers, config
+		read: (addressid, cb) ->
 			$http.get baseUrl + '/' + addressid
 			.success (data, status, headers, config) ->
-				data
+				cb data, status, headers, config
 			.error (data, status, headers, config) -> 
-				data
-		update: (addressid, data) ->
-			$http.put baseUrl + '/' + addressid, data: data
+				cb data, status, headers, config
+		update: (addressid, data, cb) ->
+			$http.put baseUrl + '/' + addressid, data
 			.success (data, status, headers, config) ->
-				data
+				cb data, status, headers, config
 			.error (data, status, headers, config) -> 
-				data
-		'delete': (addressid, data) ->
+				cb data, status, headers, config
+		'delete': (addressid, data, cb) ->
 			$http.delete baseUrl + '/' + addressid, data: data
 			.success (data, status, headers, config) ->
-				data
+				cb data, status, headers, config
 			.error (data, status, headers, config) -> 
-				data
+				cb data, status, headers, config
 
 
 		# 	$http method: 'post', url: '/addresses'
