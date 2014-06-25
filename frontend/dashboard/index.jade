@@ -3,9 +3,7 @@ html
 	head
 		title Angular
 	body
-		header.headbar-container(ng-include=' \'headbar/headbar.template.html\' ')
-		aside.menu-container(ng-include=' \'menu/menu.template.html\' ')
-		section.view-container(ng-view)
+		ng-view.view-container
 		script(type='text/javascript', src='../bower_components/requirejs/require.js', data-main='main.js')
 
 

@@ -2,86 +2,122 @@ File structure:
 
 <pre>
 	multibooker/
+		backend/
 		frontend/
 			dashboard/
-				application/
-					modules/
-						headbar/
-							headbar.module.coffee
-							headbar.template.jade
-							headbar.styl
-							headbar.spec.coffee
-						menu/
-						dock/
-						table/
-						form/
-						map/
-					services/
-						resources/
-							entity/
-					application.module.coffee
-				assets/
-					fonts/
-					images/
+				headbar/
+					headbar.controller.coffee
+					headbar.index.coffee
+					headbar.module.coffee
+					headbar.template.jade
+				menu/
+					... like headbar
+				halls/
+					halls.module.coffee
+					halls.index.coffee
+					halls.collection.template.jade
+					halls.collection.controller.coffee
+					halls.document.template.jade
+					halls.document.controller.coffee
+					halls.quickview.template.jade
+					halls.quickview.controller.coffee
+					halls.crud.service.coffee
+				app.constants.coffee
+				app.controller.coffee
+				app.directives.coffee
+				app.filters.coffee
+				app.index.coffee
+				app.module.coffee
+				app.routes.coffee
+				app.run.coffee
+				app.sevices.coffee
 				index.jade
+				require.config.coffee
 			signin/
-		backend/
-<!-- 	multibooker/
-		client/
-			dev/
-				dashboard/
-					app/
-						headbar/
-							headbar.css
-							headbar.js
-							headbar.spec.js
-							headbar.tpl.html
-							searchbox/
-								searchbox.css
-								searchbox.js
-								searchbox.spec.js
-								searchbox.tpl.html
-						menu/
-							menu.tpl.html
-							menu.js
-							menu.css
-							menu.spec.js
-						views/
-							home/
-								home.tpl.html
-								home.js
-								home.css
-							entities/
-								addresses/
-									address.js
-									address.spec.js
-									address.tpl.html
-									addresses.js
-									addresses.spec.js
-							common/
-								tables/
-									table.js
-									table.spec.js
-									table.tpl.html
-						app.css
-						app.js
-						routes.js
-					static/
-						fonts/
-						images/
-					index.html -->
 </pre>
 
-Plan:
+Endpoints:
+
+App endpoints:
+
+- standart crud endpoints
 
 <pre>
-	- Make layout like in http://iarouse.com/admin-square/dist-v1.2/index.html
-	- Make TableDirective, FormController
-	- Dock tabs
-	- Menu
-	- UI
-	- Map
-	- i18n
-	- e2e
-	- Specs
+	/events
+	/subscriptions
+	/orders
+	/tickets
+	/webcustomers
+	/funds
+	/pricezones
+	/addresses
+	/halls
+	/ages
+	/seatcolors
+	/blanktypes
+	/showtypes
+	/showgenres
+	/agentclasses
+	/cardtypes
+	/shows
+	/bsoblanks
+	/bsoinvoices
+	/hallschemes
+	/agents
+	/eventorganizers
+	/ticketsuppliers
+	/users
+	/roles
+	/workplaces
+	/menuitems
+	/printers
+	/sysparameters
+	/clientobjects
+	/companies
+	/salesites
+	/rolegroups
+	/basisevents
+	/logedoperations
+</pre>
+
+Api endpoints:
+
+- standart crud endpoints
+
+<pre>
+	/events
+	/subscriptions
+	/orders
+	/tickets
+	/webcustomers
+	/funds
+	/pricezones
+	/addresses
+	/halls
+	/ages
+	/seatcolors
+	/blanktypes
+	/showtypes
+	/showgenres
+	/agentclasses
+	/cardtypes
+	/shows
+	/bsoblanks
+	/bsoinvoices
+	/hallschemes
+	/agents
+	/eventorganizers
+	/ticketsuppliers
+	/users
+	/roles
+	/workplaces
+	/menuitems
+	/printers
+	/sysparameters
+	/clientobjects
+	/companies
+	/salesites
+	/rolegroups
+	/basisevents
+	/logedoperations
 </pre>

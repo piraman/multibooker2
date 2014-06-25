@@ -4,9 +4,7 @@
     <title>Angular</title>
   </head>
   <body>
-    <header ng-include=" 'headbar/headbar.template.html' " class="headbar-container"></header>
-    <aside ng-include=" 'menu/menu.template.html' " class="menu-container"></aside>
-    <section ng-view class="view-container"></section>
+    <ng-view class="view-container"></ng-view>
     <script type="text/javascript" src="../bower_components/requirejs/require.js" data-main="main.js"></script>
   </body>
 </html>

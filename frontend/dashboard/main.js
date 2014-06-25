@@ -11,22 +11,16 @@
       angular: {
         exports: 'angular'
       },
-      ngRoute: {
-        deps: ['angular']
-      },
-      ngResource: {
-        deps: ['angular']
-      },
-      restangular: {
-        deps: ['angular', 'lodash']
-      }
+      ngRoute: ['angular'],
+      ngResource: ['angular'],
+      restangular: ['angular', 'lodash']
     }
   });
 
-  require(['angular', './app.module'], function(ng, app) {
+  require(['angular', './app.module', './app.constants', './app.config', './app.routes'], function(angular, app) {
     'use strict';
-    return ng.element(document).ready(function() {
-      return ng.bootstrap(document, [app.name]);
+    return angular.element(document).ready(function() {
+      return angular.bootstrap(document, [app.name]);
     });
   });
 

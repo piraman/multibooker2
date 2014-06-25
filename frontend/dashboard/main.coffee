@@ -6,18 +6,12 @@ require.config
 		restangular: '../bower_components/restangular/dist/restangular'
 		lodash: '../bower_components/lodash/dist/lodash.compat'
 	shim:
-		angular:
-			exports: 'angular'
-		ngRoute:
-			deps: ['angular']
-		ngResource:
-			deps: ['angular']
-		restangular:
-			deps: ['angular', 'lodash']
-
-require ['angular', './app.module'], (ng, app) ->
+		angular: exports: 'angular'
+		ngRoute: ['angular']
+		ngResource: ['angular']
+		restangular: ['angular', 'lodash']
+require ['angular', './app.module', './app.constants', './app.config', './app.routes'], (angular, app) ->
 	'use strict'
-	ng
+	angular
 	.element document
-	.ready ->
-		ng.bootstrap document, [app.name]
+	.ready -> angular.bootstrap document, [app.name]

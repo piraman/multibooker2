@@ -1,40 +1,27 @@
 port = 9004
 sid = 'bwPxKUPqWMoCTWQoolBnXdSkYnxudrYuQyTUQcKIBEMSjxBsHN'
+multibookerHost = 'http://192.168.1.101'
+multibookerRequestEndpoint = '/cgi-bin/b2e?request='
+makeMultibookerRequestString = (object) ->
+	string = '<query>'
+	for key, value of object then string += "<#{key}>#{value}</#{key}>"
+	string += "<sid>#{sid}</sid></query>"
+makeRequestUrl = (queryObject) ->
+	multibookerHost + multibookerRequestEndpoint + makeMultibookerRequestString queryObject
 
 express = require 'express'
+extend = require 'node.extend'
 bodyParser = require 'body-parser'
 http = require 'http'
 app = do express
 
 app.use do bodyParser.json
-app.use (req, res, next) ->
-	oldWhrite = res.write
-	oldEnd = res.end
-	chunks = []
-	res.whrite = (chunk) ->
-		chunks.push chunk
-		oldWhrite.apply res, arguments
-	res.end = (chunk) ->
-		if chunk then chunks.push chunk
-		body = Buffer.concat chunks
-		.toString('utf8')
-		console.log '_______________________________________________________'
-		console.log 'REQUEST'
-		console.log ''
-		console.log '%s %s %s', req.method, req.url, JSON.stringify req.body
-		console.log ''
-		console.log 'RESPONSE'
-		console.log ''
-		console.log '%s', body
-		console.log '_______________________________________________________'
-		oldEnd.apply res, arguments
-	do next
 
 app.all '*', (req, res, next) ->
 	res.header 'access-control-allow-origin', req.headers.origin
-	res.header 'access-control-allow-methods', 'get, post, PUT, patch, delete, options'
+	res.header 'access-control-allow-methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS'
 	res.header 'access-control-allow-credentials', false
-	res.header 'access-control-allow-headers', 'X-Requested-With, x-http-method-override, content-type, accept, x-sid'
+	res.header 'access-control-allow-headers', 'X-Requested-With, x-http-method-override, content-type, accept, mb-sid'
 	do next
 
 app.options '*', (req, res) ->
@@ -42,58 +29,114 @@ app.options '*', (req, res) ->
 
 app.route '/addresses'
 .get (req, res) ->
-	options =
-		host: '192.168.1.101'
-		path: '/cgi-bin/b2e?request=<query><command>get</command><object>hall_addresses</object><sid>' + sid + '</sid></query>'
-		method: 'GET'
-	mbreq = http.get options, (mbres) ->
-		mbres.setEncoding 'utf8'
-		mbres.on 'data', (chunk) ->
-			res.send [JSON.parse(chunk).results[0]]
-	do mbreq.end
-.post (req, res) ->
-	options =
-		host: '192.168.1.101'
-		path: '/cgi-bin/b2e?request=<query><command>new</command><object>hall_addresses</object><addr>' + req.body.text + '</addr><sid>' + sid + '</sid></query>'
-		method: 'GET'
-	mbreq = http.get options, (mbres) ->
-		mbres.setEncoding 'utf8'
-		mbres.on 'data', (chunk) ->
-			res.send JSON.parse(chunk).results[0]
-	do mbreq.end
+	query =
+		command: 'get'
+		object: 'hall_addresses'
+	mbreq = http.get makeRequestUrl(query), (mbres) ->
+		mbres.pipe res
 
 app.route '/addresses/:addressid'
-.get (req, res) ->
-	options =
-		host: '192.168.1.101'
-		path: '/cgi-bin/b2e?request=<query><command>get</command><object>hall_addresses</object><where>ADDR_ID=' + req.params.addressid + '</where><sid>' + sid + '</sid></query>'
-		method: 'GET'
-	mbreq = http.get options, (mbres) ->
-		mbres.setEncoding 'utf8'
-		mbres.on 'data', (chunk) ->
-			res.send JSON.parse(chunk).results[0]
-	do mbreq.end
 .put (req, res) ->
-	options =
-		host: '192.168.1.101'
-		path: '/cgi-bin/b2e?request=<query><command>modify</command><object>hall_addresses</object><addr_id>' + req.params.addressid + '</addr_id><addr>' + req.body.addr + '</addr><objversion>' + req.body.objversion + '</objversion><sid>' + sid + '</sid></query>'
-		method: 'GET'
-	mbreq = http.get options, (mbres) ->
-		console.log mbres.headers
-		mbres.setEncoding 'utf8'
-		mbres.on 'data', (chunk) ->
-			res.send JSON.parse(chunk).results[0]
-	do mbreq.end
-.delete (req, res) ->
-	options =
-		host: '192.168.1.101'
-		path: '/cgi-bin/b2e?request=<query><command>remove</command><object>hall_addresses</object><addr_id>' + req.params.addressid + '</addr_id><objversion>' + req.query.objversion + '</objversion><sid>' + sid + '</sid></query>'
-		method: 'GET'
-	mbreq = http.get options, (mbres) ->
-		mbres.setEncoding 'utf8'
-		mbres.on 'data', (chunk) ->
-			res.send JSON.parse(chunk).results[0]
-	do mbreq.end
+	query = extend req.body,
+		command: 'modify'
+		object: 'hall_addresses'
+	mbreq = http.get makeRequestUrl(query), (mbres) ->
+		mbres.pipe res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	# options =
+	# 	host: '192.168.1.101'
+	# 	path: '/cgi-bin/b2e?request=<query><command>get</command><object>hall</object><sid>' + sid + '</sid></query>'
+	# 	method: 'GET'
+	# mbreq = http.get options, (mbres) ->
+	# 	console.log mbres.statusCode
+		# mbres.setEncoding 'utf8'
+		# mbres.on 'data', (chunk) ->
+		# 	console.log 'RESPONSE: ', chunk
+		# 	res.send JSON.parse(chunk).results[0]
+		# 	# res.send chunk
+		# 	# res.write chunk
+		# 	# do res.end
+		# mbres.end
+	# do mbreq.end
+# .post (req, res) ->
+# 	options =
+# 		host: '192.168.1.101'
+# 		path: '/cgi-bin/b2e?request=<query><command>new</command><object>hall</object><name>' + req.body.hall + '</name><sid>' + sid + '</sid></query>'
+# 		method: 'GET'
+# 	mbreq = http.get options, (mbres) ->
+# 		mbres.setEncoding 'utf8'
+# 		mbres.on 'data', (chunk) ->
+# 			console.log 'RESPONSE: ', chunk
+# 			res.send JSON.parse(chunk).results[0]
+# 	do mbreq.end
+
+# app.route '/halls/:hallid'
+# .get (req, res) ->
+# 	options =
+# 		host: '192.168.1.101'
+# 		path: '/cgi-bin/b2e?request=<query><command>get</command><object>hall</object><where>HALL_ID=' + req.params.hallid + '</where><sid>' + sid + '</sid></query>'
+# 		method: 'GET'
+# 	mbreq = http.get options, (mbres) ->
+# 		mbres.setEncoding 'utf8'
+# 		mbres.on 'data', (chunk) ->
+# 			console.log 'RESPONSE: ', chunk
+# 			res.send JSON.parse(chunk).results[0]
+# 	do mbreq.end
+# .put (req, res) ->
+# 	options =
+# 		host: '192.168.1.101'
+# 		path: '/cgi-bin/b2e?request=<query><command>modify</command><object>hall_halls</object><hall_id>' + req.params.hallid + '</hall_id><name>' + req.body.name + '</name><objversion>' + req.body.objversion + '</objversion><sid>' + sid + '</sid></query>'
+# 		method: 'GET'
+# 	mbreq = http.get options, (mbres) ->
+# 		mbres.setEncoding 'utf8'
+# 		mbres.on 'data', (chunk) ->
+# 			console.log 'RESPONSE: ', chunk
+# 			res.send JSON.parse(chunk).results[0]
+# 	do mbreq.end
+# .delete (req, res) ->
+# 	options =
+# 		host: '192.168.1.101'
+# 		path: '/cgi-bin/b2e?request=<query><command>remove</command><object>hall_halls</object><hall_id>' + req.params.hallid + '</hall_id><objversion>' + req.query.objversion + '</objversion><sid>' + sid + '</sid></query>'
+# 		method: 'GET'
+# 	mbreq = http.get options, (mbres) ->
+# 		mbres.setEncoding 'utf8'
+# 		mbres.on 'data', (chunk) ->
+# 			console.log 'RESPONSE: ', chunk
+# 			res.send JSON.parse(chunk).results[0]
+# 	do mbreq.end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 server = app.listen port, ->
 	console.log 'Listening on port ' + port
@@ -109,7 +152,30 @@ server = app.listen port, ->
 
 
 
-
+#app.use (req, res, next) ->
+# 	oldWhrite = res.write
+# 	oldEnd = res.end
+# 	chunks = []
+# 	res.whrite = (chunk) ->
+# 		console.log chunk
+# 		chunks.push chunk
+# 		oldWhrite.apply res, arguments
+# 	res.end = (chunk) ->
+# 		console.log chunk
+# 		if chunk then chunks.push chunk
+# 		body = Buffer.concat chunks
+# 		.toString('utf8')
+# 		console.log '_______________________________________________________'
+# 		console.log 'REQUEST'
+# 		console.log ''
+# 		console.log '%s %s %s', req.method, req.url, JSON.stringify req.body
+# 		console.log ''
+# 		console.log 'RESPONSE'
+# 		console.log ''
+# 		console.log '%s', body
+# 		console.log '_______________________________________________________'
+# 		oldEnd.apply res, arguments
+# 	do next
 # app.get '/addresses', (req, res) ->
 # 	options =
 # 		host: '192.168.1.101'

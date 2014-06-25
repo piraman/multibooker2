@@ -1,15 +1,14 @@
 
 <div>collection</div>
-<div>{{addresses[0]}}</div>
 <table>
   <thead>
     <tr>
-      <th ng-repeat="header in addresses[0].data_columns">{{header}}</th>
+      <th ng-repeat="column in columns">{{column}}</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="row in addresses[0].data">
-      <td ng-repeat="cell in row">{{cell}}</td>
+    <tr ng-repeat="document in collection" ng-click="showBar()">
+      <td ng-repeat="field in document">{{field}}</td>
       <td>
         <button ng-click="delete($index)">Delete</button>
       </td>
