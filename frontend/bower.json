@@ -26,6 +26,7 @@
     "angular-resource": "~1.2.16",
     "angular-route": "~1.2.16",
     "requirejs": "~2.1.13",
-    "restangular": "~1.4.0"
+    "restangular": "~1.4.0",
+    "angular-ui-router": "~0.2.10"
   }
 }

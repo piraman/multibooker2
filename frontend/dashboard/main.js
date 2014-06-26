@@ -2,22 +2,20 @@
   require.config({
     paths: {
       angular: '../bower_components/angular/angular',
-      ngRoute: '../bower_components/angular-route/angular-route',
-      ngResource: '../bower_components/angular-resource/angular-resource',
+      lodash: '../bower_components/lodash/dist/lodash.compat',
       restangular: '../bower_components/restangular/dist/restangular',
-      lodash: '../bower_components/lodash/dist/lodash.compat'
+      uirouter: '../bower_components/angular-ui-router/release/angular-ui-router'
     },
     shim: {
       angular: {
         exports: 'angular'
       },
-      ngRoute: ['angular'],
-      ngResource: ['angular'],
-      restangular: ['angular', 'lodash']
+      restangular: ['angular', 'lodash'],
+      uirouter: ['angular']
     }
   });
 
-  require(['angular', './app.module', './app.constants', './app.config', './app.routes'], function(angular, app) {
+  require(['angular', './app.module'], function(angular, app) {
     'use strict';
     return angular.element(document).ready(function() {
       return angular.bootstrap(document, [app.name]);
