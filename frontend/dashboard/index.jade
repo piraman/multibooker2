@@ -3,6 +3,7 @@ html
 	head
 		title Angular
 	body
+		ng-include.menu-container(src='\'./menu/menu.template.html\'')
 		ui-view.view-container
 		script(type='text/javascript', src='../bower_components/requirejs/require.js', data-main='main.js')
 
