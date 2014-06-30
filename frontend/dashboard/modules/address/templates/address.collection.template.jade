@@ -1,0 +1,9 @@
+div collection
+button(ng-click='create()') Create
+table
+	thead
+		th(ng-repeat='column in addresses.meta.columns') {{column}}
+	tbody
+		tr(ng-repeat='document in addresses', ng-click='showQuickview($index)')
+			td(ng-repeat='column in addresses.meta.columns') {{document[column]}}
+ng-include(src='\'./modules/address/templates/address.quickview.template.html\'')

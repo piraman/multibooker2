@@ -2,10 +2,11 @@ doctype html
 html
 	head
 		title Angular
+		link(rel="stylesheet", type="text/css", href="../bower_components/angucomplete/angucomplete.css")
 	body
-		ng-include.menu-container(src='\'./menu/menu.template.html\'')
-		ui-view.view-container
-		script(type='text/javascript', src='../bower_components/requirejs/require.js', data-main='main.js')
+		ng-include(src='\'./modules/menu/templates/menu.template.html\'')
+		ui-view
+		script(type='text/javascript', src='../bower_components/requirejs/require.js', data-main='./require.config')
 
 
 

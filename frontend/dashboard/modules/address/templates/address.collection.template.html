@@ -1,0 +1,14 @@
+
+<div>collection</div>
+<button ng-click="create()">Create</button>
+<table>
+  <thead>
+    <th ng-repeat="column in addresses.meta.columns">{{column}}</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="document in addresses" ng-click="showQuickview($index)">
+      <td ng-repeat="column in addresses.meta.columns">{{document[column]}}</td>
+    </tr>
+  </tbody>
+</table>
+<ng-include src="'./modules/address/templates/address.quickview.template.html'"></ng-include>

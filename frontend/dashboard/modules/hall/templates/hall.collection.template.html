@@ -1,0 +1,14 @@
+
+<div>collection</div>
+<button ng-click="create()">Create</button>
+<table>
+  <thead>
+    <th ng-repeat="column in halls.meta.columns">{{column}}</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="document in halls" ng-click="showQuickview($index)">
+      <td ng-repeat="column in halls.meta.columns">{{document[column]}}</td>
+    </tr>
+  </tbody>
+</table>
+<ng-include src="'./modules/hall/templates/hall.quickview.template.html'"></ng-include>

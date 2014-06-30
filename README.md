@@ -34,6 +34,49 @@ File structure:
 				index.jade
 				require.config.coffee
 			signin/
+
+
+
+multibooker/
+	backend/
+	frontend/
+		dashboard/
+			modules/
+				addresses/
+					modules/
+					configs/
+					constants/
+					controllers/
+					directives/
+					factories/
+					providers/
+					runs/
+					services/
+					templates/
+					values/
+					app.addresses.index.coffee
+					app.addresses.module.coffee
+				halls/
+			configs/
+			constants/
+			controllers/
+			directives/
+			factories/
+			providers/
+			runs/
+			services/
+			templates/
+			values/
+			app.index.coffee
+			app.module.coffee
+			index.coffee
+			index.jade
+		signin/
+
+
+
+
+
 </pre>
 
 Endpoints:

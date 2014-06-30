@@ -27,6 +27,8 @@
     "angular-route": "~1.2.16",
     "requirejs": "~2.1.13",
     "restangular": "~1.4.0",
-    "angular-ui-router": "~0.2.10"
+    "angular-ui-router": "~0.2.10",
+    "requirejs-domready": "~2.0.1",
+    "angucomplete": "*"
   }
 }

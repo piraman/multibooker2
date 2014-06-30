@@ -1,0 +1,7 @@
+div(ng-controller='AddressQuickviewController', ng-show='quickviewVisible')
+	div quickview address
+	input(ng-model='address.id', disabled)
+	input(ng-model='address.addr')
+	input(ng-model='address.status')
+	input(ng-model='address.objversion')
+	button(ng-click='save()') Save

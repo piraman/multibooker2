@@ -1,0 +1,9 @@
+div collection
+button(ng-click='create()') Create
+table
+	thead
+		th(ng-repeat='column in halls.meta.columns') {{column}}
+	tbody
+		tr(ng-repeat='document in halls', ng-click='showQuickview($index)')
+			td(ng-repeat='column in halls.meta.columns') {{document[column]}}
+ng-include(src='\'./modules/hall/templates/hall.quickview.template.html\'')

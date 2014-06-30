@@ -2,10 +2,11 @@
 <html>
   <head>
     <title>Angular</title>
+    <link rel="stylesheet" type="text/css" href="../bower_components/angucomplete/angucomplete.css">
   </head>
   <body>
-    <ng-include src="'./menu/menu.template.html'" class="menu-container"></ng-include>
-    <ui-view class="view-container"></ui-view>
-    <script type="text/javascript" src="../bower_components/requirejs/require.js" data-main="main.js"></script>
+    <ng-include src="'./modules/menu/templates/menu.template.html'"></ng-include>
+    <ui-view></ui-view>
+    <script type="text/javascript" src="../bower_components/requirejs/require.js" data-main="./require.config"></script>
   </body>
 </html>
