@@ -3,12 +3,11 @@
   <div>quickview address</div>
   <input ng-model="hall.id" disabled="disabled"/>
   <input ng-model="hall.name"/>
-  <input ng-model="hall.addr_id"/>
-  <input ng-model="hall.addr"/>
-  <input ng-model="hall.status"/>
-  <input ng-model="hall.basis_id_hall"/>
-  <input ng-model="hall.rmb_menu1"/>
-  <input ng-model="hall.objversion"/>
+  <input ng-model="hall.addr_id" disabled="disabled"/>
+  <typeahead typeahead-id-model="hall.addr_id" typeahead-value-model="hall.addr" typeahead-api-endpoint="addresses" typeahead-value-column="addr"></typeahead>
+  <input ng-model="hall.status" disabled="disabled"/>
+  <input ng-model="hall.basis_id_hall" disabled="disabled"/>
+  <input ng-model="hall.rmb_menu1" disabled="disabled"/>
+  <input ng-model="hall.objversion" disabled="disabled"/>
   <button ng-click="save()">Save</button>
-  <angucomplete placeholder="Search countries" pause="100" selectedobject="selectedCountry" localdata="countries" searchfields="name" titlefield="name" minlength="1" inputclass="form-control form-control-small" matchclass="highlight"></angucomplete>
 </div>

@@ -1,0 +1,15 @@
+
+<div class="typeahead-container">
+  <div class="input-and-list-container">
+    <input type="text" ng-model="term"/>
+    <ul ng-show="showDropdown">
+      <li ng-repeat="item in items" ng-click="selectItem($index)">{{item[typeaheadApiEndpointValueColumn]}}</li>
+    </ul>
+  </div>
+  <div class="dropdown-arrow">
+    <button ng-click="toggleDropdown()">\/</button>
+  </div>
+  <div class="clear">
+    <button ng-click="clearTerm()">X</button>
+  </div>
+</div>

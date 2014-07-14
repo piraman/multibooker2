@@ -1,0 +1,9 @@
+.typeahead-container
+	.input-and-list-container
+		input(type='text', ng-model='term')
+		ul(ng-show='showDropdown')
+			li(ng-repeat='item in items', ng-click='selectItem($index)') {{item[typeaheadApiEndpointValueColumn]}}
+	.dropdown-arrow
+		button(ng-click='toggleDropdown()') \/
+	.clear
+		button(ng-click='clearTerm()') X

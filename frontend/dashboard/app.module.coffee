@@ -5,6 +5,7 @@ define [
 	'./modules/address/address.index'
 	'./modules/menu/menu.index'
 	'./modules/hall/hall.index'
+	'./modules/order/order.index'
 ], (angular) ->
 	'use strict'
 	app = angular.module 'app', [
@@ -13,6 +14,7 @@ define [
 		'app.address'
 		'app.menu'
 		'app.hall'
+		'app.order'
 	]
 	app.constant 'sid', 'bwPxKUPqWMoCTWQoolBnXdSkYnxudrYuQyTUQcKIBEMSjxBsHN'
 	app.config [
@@ -30,8 +32,12 @@ define [
 				console.log arguments
 				if data.results[0].data?
 					newDataArray = []
-					if what is 'addresses' then data.results[0].data_columns[data.results[0].data_columns.indexOf 'ADDR_ID'] = 'id'
-					else if what is 'halls' then data.results[0].data_columns[data.results[0].data_columns.indexOf 'HALL_ID'] = 'id'
+					switch what
+						when 'addresses' then data.results[0].data_columns[data.results[0].data_columns.indexOf 'ADDR_ID'] = 'id'
+						when 'halls' then data.results[0].data_columns[data.results[0].data_columns.indexOf 'HALL_ID'] = 'id'
+						when 'agents' then data.results[0].data_columns[data.results[0].data_columns.indexOf 'AGENT_ID'] = 'id'
+						when 'orders' then data.results[0].data_columns[data.results[0].data_columns.indexOf 'ORDER_ID'] = 'id'
+					# else if what is 'halls' then data.results[0].data_columns[data.results[0].data_columns.indexOf 'HALL_ID'] = 'id'
 					for value, i in data.results[0].data
 						newRowObject = {}
 						for column, ii in data.results[0].data_columns

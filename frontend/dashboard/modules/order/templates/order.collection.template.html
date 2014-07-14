@@ -1,0 +1,14 @@
+
+<div>collection</div>
+<button ng-click="create()">Create</button>
+<table border="1">
+  <thead>
+    <th ng-repeat="column in orders.meta.columns">{{column}}</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="document in orders" ng-click="showQuickview($index)">
+      <td ng-repeat="column in orders.meta.columns">{{document[column]}}</td>
+    </tr>
+  </tbody>
+</table>
+<ng-include src=" './modules/order/templates/order.quickview.template.html' "></ng-include>

@@ -1,8 +1,8 @@
 (function() {
-  define(['angular', 'uirouter', 'restangular', './modules/address/address.index', './modules/menu/menu.index', './modules/hall/hall.index'], function(angular) {
+  define(['angular', 'uirouter', 'restangular', './modules/address/address.index', './modules/menu/menu.index', './modules/hall/hall.index', './modules/order/order.index'], function(angular) {
     'use strict';
     var app;
-    app = angular.module('app', ['ui.router', 'restangular', 'app.address', 'app.menu', 'app.hall']);
+    app = angular.module('app', ['ui.router', 'restangular', 'app.address', 'app.menu', 'app.hall', 'app.order']);
     app.constant('sid', 'bwPxKUPqWMoCTWQoolBnXdSkYnxudrYuQyTUQcKIBEMSjxBsHN');
     app.config([
       '$stateProvider', '$urlRouterProvider', 'RestangularProvider', function($stateProvider, $urlRouterProvider, RestangularProvider) {
@@ -17,10 +17,18 @@
           console.log(arguments);
           if (data.results[0].data != null) {
             newDataArray = [];
-            if (what === 'addresses') {
-              data.results[0].data_columns[data.results[0].data_columns.indexOf('ADDR_ID')] = 'id';
-            } else if (what === 'halls') {
-              data.results[0].data_columns[data.results[0].data_columns.indexOf('HALL_ID')] = 'id';
+            switch (what) {
+              case 'addresses':
+                data.results[0].data_columns[data.results[0].data_columns.indexOf('ADDR_ID')] = 'id';
+                break;
+              case 'halls':
+                data.results[0].data_columns[data.results[0].data_columns.indexOf('HALL_ID')] = 'id';
+                break;
+              case 'agents':
+                data.results[0].data_columns[data.results[0].data_columns.indexOf('AGENT_ID')] = 'id';
+                break;
+              case 'orders':
+                data.results[0].data_columns[data.results[0].data_columns.indexOf('ORDER_ID')] = 'id';
             }
             _ref = data.results[0].data;
             for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {

@@ -1,0 +1,9 @@
+div collection
+button(ng-click='create()') Create
+table(border='1')
+	thead
+		th(ng-repeat='column in orders.meta.columns') {{column}}
+	tbody
+		tr(ng-repeat='document in orders', ng-click='showQuickview($index)')
+			td(ng-repeat='column in orders.meta.columns') {{document[column]}}
+ng-include(src=' \'./modules/order/templates/order.quickview.template.html\' ')

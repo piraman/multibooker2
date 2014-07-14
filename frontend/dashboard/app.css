@@ -1,0 +1,14 @@
+.typeahead-container {
+  display: inline-flex;
+}
+.typeahead-container .input-and-list-container {
+  position: relative;
+}
+.typeahead-container .input-and-list-container ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}

@@ -16,7 +16,9 @@
       value = object[key];
       string += "<" + key + ">" + value + "</" + key + ">";
     }
-    return string += "<sid>" + sid + "</sid></query>";
+    string += "<sid>" + sid + "</sid></query>";
+    console.log(string);
+    return string;
   };
 
   makeRequestUrl = function(queryObject) {
@@ -36,6 +38,9 @@
   app.use(bodyParser.json());
 
   app.all('*', function(req, res, next) {
+    console.log('query', req.query);
+    console.log('params', req.params);
+    console.log('body', req.body);
     res.header('access-control-allow-origin', req.headers.origin);
     res.header('access-control-allow-methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     res.header('access-control-allow-credentials', false);
@@ -53,6 +58,9 @@
       command: 'get',
       object: 'hall_addresses'
     };
+    if (req.query.addrLike != null) {
+      query.where = 'addr like %' + req.query.addrLike + '%';
+    }
     return mbreq = http.get(makeRequestUrl(query), function(mbres) {
       return mbres.pipe(res);
     });
@@ -109,6 +117,80 @@
     query = extend(req.body, {
       command: 'modify',
       object: 'hall'
+    });
+    return mbreq = http.get(makeRequestUrl(query), function(mbres) {
+      return mbres.pipe(res);
+    });
+  });
+
+  app.route('/orders').get(function(req, res) {
+    var mbreq, query;
+    query = {
+      command: 'get',
+      object: 'order'
+    };
+    if (req.query.offset != null) {
+      query.page_no = req.query.offset;
+    }
+    if (req.query.limit != null) {
+      query.rows_max_num = req.query.limit;
+    }
+    return mbreq = http.get(makeRequestUrl(query), function(mbres) {
+      return mbres.pipe(res);
+    });
+  });
+
+  app.route('/orders/:orderId').get(function(req, res) {
+    var mbreq, query;
+    query = extend(req.body, {
+      command: 'get',
+      object: 'order',
+      where: 'order_id = ' + req.params.orderId
+    });
+    return mbreq = http.get(makeRequestUrl(query), function(mbres) {
+      return mbres.pipe(res);
+    });
+  }).put(function(req, res) {
+    var mbreq, query;
+    req.body.order_id = req.body.id;
+    delete req.body.id;
+    query = extend(req.body, {
+      command: 'modify',
+      object: 'order'
+    });
+    return mbreq = http.get(makeRequestUrl(query), function(mbres) {
+      return mbres.pipe(res);
+    });
+  });
+
+  app.route('/agents').get(function(req, res) {
+    var mbreq, query;
+    query = {
+      command: 'get',
+      object: 'agent'
+    };
+    return mbreq = http.get(makeRequestUrl(query), function(mbres) {
+      return mbres.pipe(res);
+    });
+  });
+
+  app.route('/agents/:agentId').get(function(req, res) {
+    var mbreq, query;
+    query = extend(req.body, {
+      command: 'get',
+      object: 'order',
+      where: 'agent_id = ' + req.params.agentId
+    });
+    return mbreq = http.get(makeRequestUrl(query), function(mbres) {
+      return mbres.pipe(res);
+    });
+  }).put(function(req, res) {
+    var mbreq, query;
+    req.body.agent_id = req.body.id;
+    delete req.body.id;
+    query = extend(req.body, {
+      command: 'modify',
+      object: 'agent'
     });
     return mbreq = http.get(makeRequestUrl(query), function(mbres) {
       return mbres.pipe(res);

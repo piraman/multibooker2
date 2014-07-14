@@ -6,6 +6,8 @@ makeMultibookerRequestString = (object) ->
 	string = '<query>'
 	for key, value of object then string += "<#{key}>#{value}</#{key}>"
 	string += "<sid>#{sid}</sid></query>"
+	console.log string
+	string
 makeRequestUrl = (queryObject) ->
 	multibookerHost + multibookerRequestEndpoint + makeMultibookerRequestString queryObject
 
@@ -18,6 +20,9 @@ app = do express
 app.use do bodyParser.json
 
 app.all '*', (req, res, next) ->
+	console.log 'query', req.query
+	console.log 'params', req.params
+	console.log 'body', req.body
 	res.header 'access-control-allow-origin', req.headers.origin
 	res.header 'access-control-allow-methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS'
 	res.header 'access-control-allow-credentials', false
@@ -27,11 +32,14 @@ app.all '*', (req, res, next) ->
 app.options '*', (req, res) ->
 	res.send 200
 
+## Addresses ############################################
 app.route '/addresses'
 .get (req, res) ->
 	query =
 		command: 'get'
 		object: 'hall_addresses'
+	if req.query.addrLike?
+		query.where = 'addr like %' + req.query.addrLike + '%'
 	mbreq = http.get makeRequestUrl(query), (mbres) ->
 		mbres.pipe res
 
@@ -52,6 +60,7 @@ app.route '/addresses/:addressId'
 	mbreq = http.get makeRequestUrl(query), (mbres) ->
 		mbres.pipe res
 
+## Halls ############################################
 app.route '/halls'
 .get (req, res) ->
 	query =
@@ -77,8 +86,59 @@ app.route '/halls/:hallId'
 	mbreq = http.get makeRequestUrl(query), (mbres) ->
 		mbres.pipe res
 
+## Orders ############################################
+app.route '/orders'
+.get (req, res) ->
+	query =
+		command: 'get'
+		object: 'order'
+	if req.query.offset? then query.page_no = req.query.offset
+	if req.query.limit? then query.rows_max_num = req.query.limit
+	mbreq = http.get makeRequestUrl(query), (mbres) ->
+		mbres.pipe res
 
+app.route '/orders/:orderId'
+.get (req, res) ->
+	query = extend req.body,
+		command: 'get'
+		object: 'order'
+		where: 'order_id = ' + req.params.orderId
+	mbreq = http.get makeRequestUrl(query), (mbres) ->
+		mbres.pipe res
+.put (req, res) ->
+	req.body.order_id = req.body.id
+	delete req.body.id
+	query = extend req.body,
+		command: 'modify'
+		object: 'order'
+	mbreq = http.get makeRequestUrl(query), (mbres) ->
+		mbres.pipe res
 
+## Agents ############################################
+app.route '/agents'
+.get (req, res) ->
+	query =
+		command: 'get'
+		object: 'agent'
+	mbreq = http.get makeRequestUrl(query), (mbres) ->
+		mbres.pipe res
+
+app.route '/agents/:agentId'
+.get (req, res) ->
+	query = extend req.body,
+		command: 'get'
+		object: 'order'
+		where: 'agent_id = ' + req.params.agentId
+	mbreq = http.get makeRequestUrl(query), (mbres) ->
+		mbres.pipe res
+.put (req, res) ->
+	req.body.agent_id = req.body.id
+	delete req.body.id
+	query = extend req.body,
+		command: 'modify'
+		object: 'agent'
+	mbreq = http.get makeRequestUrl(query), (mbres) ->
+		mbres.pipe res
 
 
 

@@ -2,13 +2,11 @@ define [
 	'angular'
 	'uirouter'
 	'restangular'
-	'angucomplete'
 ], (angular) ->
 	'use strict'
 	hall = angular.module 'app.hall', [
 		'ui.router'
 		'restangular'
-		'angucomplete'
 	]
 	hall.config [
 		'$stateProvider'

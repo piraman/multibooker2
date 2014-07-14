@@ -5,8 +5,7 @@
       lodash: '../bower_components/lodash/dist/lodash.compat',
       restangular: '../bower_components/restangular/dist/restangular',
       uirouter: '../bower_components/angular-ui-router/release/angular-ui-router',
-      domready: '../bower_components/requirejs-domready/domready',
-      angucomplete: '../bower_components/angucomplete/angucomplete'
+      domready: '../bower_components/requirejs-domready/domready'
     },
     shim: {
       angular: {

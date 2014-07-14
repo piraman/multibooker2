@@ -1,8 +1,8 @@
 (function() {
-  define(['angular', 'uirouter', 'restangular', 'angucomplete'], function(angular) {
+  define(['angular', 'uirouter', 'restangular'], function(angular) {
     'use strict';
     var hall;
-    hall = angular.module('app.hall', ['ui.router', 'restangular', 'angucomplete']);
+    hall = angular.module('app.hall', ['ui.router', 'restangular']);
     hall.config([
       '$stateProvider', function($stateProvider) {
         return $stateProvider.state('hall', {

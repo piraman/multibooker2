@@ -1,0 +1,245 @@
+div(ng-controller='OrderQuickviewController', ng-show='quickviewVisible')
+	div quickview order
+	input(ng-model='order.id', disabled)
+	input(ng-model='order.order_date_time')
+	input(ng-model='order.order_date')
+	input(ng-model='order.status')
+	input(ng-model='order.status_ru')
+	input(ng-model='order.payment_type')
+	input(ng-model='order.payment_type_ru')
+	input(ng-model='order.color')
+	input(ng-model='order.discount')
+	input(ng-model='order.cash_amount')
+	input(ng-model='order.card_amount')
+	input(ng-model='order.gift_card_amount')
+	input(ng-model='order.agent_id')
+
+	typeahead(
+		typeahead-api-endpoint-id-column='agent_id',
+		typeahead-api-endpoint-value-column='name',
+		typeahead-api-endpoint='agents',
+		typeahead-id-column='agent_id',
+		typeahead-id-model='order.agent_id',
+		typeahead-value-column='agent_name',
+		typeahead-value-model='order.agent_name'
+	)
+
+
+
+	
+	//- input(ng-model='order.agent_name')
+
+
+
+
+
+	input(ng-model='order.crm_user_id')
+	input(ng-model='order.crm_user_name')
+	input(ng-model='order.crm_user_phone')
+	input(ng-model='order.crm_user_email')
+	input(ng-model='order.count_reserved_tickets')
+	input(ng-model='order.count_to_pay_tickets')
+	input(ng-model='order.count_paid_tickets')
+	input(ng-model='order.count_on_realization_tickets')
+	input(ng-model='order.count_on_realiz_notprinted')
+	input(ng-model='order.count_closed_tickets')
+	input(ng-model='order.count_closed_realization_tick')
+	input(ng-model='order.count_closed_realiz_notprinted')
+	input(ng-model='order.agent_realization_access')
+	input(ng-model='order.total_order_amount')
+	input(ng-model='order.total_paid_order_amount')
+	input(ng-model='order.total_to_pay_order_amount')
+	input(ng-model='order.tickets_count')
+	input(ng-model='order.places_count')
+	input(ng-model='order.printed_tickets_count')
+	input(ng-model='order.not_printed_tickets_count')
+	input(ng-model='order.comments')
+	input(ng-model='order.created_by')
+	input(ng-model='order.created_by_ru')
+	input(ng-model='order.user_id')
+	input(ng-model='order.user_fullname')
+	input(ng-model='order.reserv_date')
+	input(ng-model='order.reserv_time')
+	input(ng-model='order.send_email_response')
+	input(ng-model='order.send_sms_response')
+	input(ng-model='order.payment_trans_status')
+	input(ng-model='order.delivery_man_id')
+	input(ng-model='order.delivery_status')
+	input(ng-model='order.delivery_date_from')
+	input(ng-model='order.date_in_delivery')
+	input(ng-model='order.date_delivered')
+	input(ng-model='order.dl_city')
+	input(ng-model='order.dl_metro_station_id')
+	input(ng-model='order.dl_street')
+	input(ng-model='order.dl_bld')
+	input(ng-model='order.dl_korpus')
+	input(ng-model='order.dl_stroenie')
+	input(ng-model='order.dl_podzd')
+	input(ng-model='order.dl_et')
+	input(ng-model='order.dl_flat')
+	input(ng-model='order.dl_comments')
+	input(ng-model='order.dl_fio')
+	input(ng-model='order.dl_phone1')
+	input(ng-model='order.dl_phone2')
+	input(ng-model='order.current_user_id')
+	input(ng-model='order.objversion')
+
+	//- input(ng-model='order.name')
+	//- input(ng-model='order.addr_id', disabled)
+	//- typeahead(
+	//- 	typeahead-id-model='order.addr_id',
+	//- 	typeahead-value-model='order.addr',
+	//- 	typeahead-api-endpoint='addresses',
+	//- 	typeahead-value-column='addr'
+	//- )
+	//- input(ng-model='order.status', disabled)
+	//- input(ng-model='order.basis_id_order', disabled)
+	//- input(ng-model='order.rmb_menu1', disabled)
+	//- input(ng-model='order.objversion', disabled)
+
+	button(ng-click='save()') Save
+
+
+
+
+
+//- ["ORDER_ID","ORDER_DATE_TIME","ORDER_DATE","STATUS","STATUS_RU","PAYMENT_TYPE","PAYMENT_TYPE_RU","COLOR","DISCOUNT","CASH_AMOUNT","CARD_AMOUNT","GIFT_CARD_AMOUNT","AGENT_ID","AGENT_NAME","CRM_USER_ID","CRM_USER_NAME","CRM_USER_PHONE","CRM_USER_EMAIL","COUNT_RESERVED_TICKETS","COUNT_TO_PAY_TICKETS","COUNT_PAID_TICKETS","COUNT_ON_REALIZATION_TICKETS","COUNT_ON_REALIZ_NOTPRINTED","COUNT_CLOSED_TICKETS","COUNT_CLOSED_REALIZATION_TICK","COUNT_CLOSED_REALIZ_NOTPRINTED","AGENT_REALIZATION_ACCESS","TOTAL_ORDER_AMOUNT","TOTAL_PAID_ORDER_AMOUNT","TOTAL_TO_PAY_ORDER_AMOUNT","TICKETS_COUNT","PLACES_COUNT","PRINTED_TICKETS_COUNT","NOT_PRINTED_TICKETS_COUNT","COMMENTS","CREATED_BY","CREATED_BY_RU","USER_ID","USER_FULLNAME","RESERV_DATE","RESERV_TIME","SEND_EMAIL_RESPONSE","SEND_SMS_RESPONSE","PAYMENT_TRANS_STATUS","DELIVERY_MAN_ID","DELIVERY_STATUS","DELIVERY_DATE_FROM","DATE_IN_DELIVERY","DATE_DELIVERED","DL_CITY","DL_METRO_STATION_ID","DL_STREET","DL_BLD","DL_KORPUS","DL_STROENIE","DL_PODZD","DL_ET","DL_FLAT","DL_COMMENTS","DL_FIO","DL_PHONE1","DL_PHONE2","CURRENT_USER_ID","OBJVERSION"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//- typeahead(
+	//- 	typeahead-id-model='order.id'
+	//- 	typeahead-text-model='order.addr'
+	//- 	typeahead-api-endpoint='addresses'
+	//- 	typeahead-api-text-column='addr'
+	//- 	typeahead-api-id-column='addr_id'
+	//- 	typeahead-autocomplete-columns=''
+	//- 	typeahead-where-columns=''
+	//- 	typeahead-allow-empty-value='false'
+	//- )
+
+	//- typeahead(typeahead-endpoint='addresses', typeahead-fields='id,addr', typeahead-id='order.id', typeahead-text='order.addr')
+	//- input(type='text', list='addresses', autocomplete='on')
+	//- datalist(id='addresses')
+	//- 	option(value='text') text
+	//- 	option(value='text2') text3
+
+	//- typeahead
+		//- option(ng-repeat='item in items', value='item.id') {{item.text}}
+
+
+
+	//- input(ng-model='word')
+	//- span(habra-habr-work='word', habra='NehabraParent')
+	//- 	span(habra-habr-work='word', habra='NehabraChild')
+	//- pre {{log}}
+
+
+
+
+
+
+
+
+
+
+
+	//- typeahead(items='items', prompt='Start typing', title='abbreviation', subtitle='name', model='abbreviation', on-select='onItemSelected()')
+
+
+	//- typeahead(
+	//- 	typeahead-url='http://localhost:9004',
+	//- 	typeahead-endpoint='addresses'
+	//- 	typeahead-columns='addr_id,name',
+	//- 	typeahead-id='order.addr_id',
+	//- 	typeahead-text='order.addr'
+	//- 	typeahead-where='order.id'
+	//- )
+
+
+
+
+
+
+
+
+
+
+
+	//- typeahead(
+	//- 	api-endpoint='addresses'
+	//- 	fields='addr_id,addr'
+	//- )	ng-model='order.addr_id'
+	
+
+	//- h4 Static arrays
+	//- pre Model: {{selCode | json}}
+	//- input(
+	//- 	type="text"
+	//- 	ng-model="selCode" 
+	//- 	typeahead="country.code as country.name for country in countries | filter:$viewValue | limitTo: 8" 
+	//- 	class="form-control"
+	//- 	typeahead-editable='false'
+	//- )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//- angucomplete(
+	//- 	placeholder="Search countries",
+	//- 	pause="100",
+	//- 	selectedobject="selectedCountry",
+	//- 	localdata="countries",
+	//- 	searchfields="name",
+	//- 	titlefield="name",
+	//- 	minlength="1",
+	//- 	inputclass="form-control form-control-small",
+	//- 	matchclass="highlight"
+	//- )
+
+
+//- <angucomplete id="ex1" placeholder="Search countries" pause="100" selectedobject="selectedCountry" localdata="countries" searchfields="name" titlefield="name" minlength="1" inputclass="form-control form-control-small" matchclass="highlight" />
+
+
+
+
+	angucomplete(
+		placeholder='Placeholder',
+		selectedobject='object',
+
+	)
+
+//- <angucomplete id="members"
+//-               placeholder="Search members"
+//-               pause="400"
+//-               selectedobject="testObj"
+//-               url="http://myserver.com/api/user/find?s="
+//-               datafield="results"
+//-               titlefield="firstName,surname"
+//-               descriptionfield="email"
+//-               imagefield="profilePic"
+//-               inputclass="form-control form-control-small"/>
